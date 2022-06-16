@@ -42,4 +42,19 @@ final class LoggedOutInteractor: PresentableInteractor<LoggedOutPresentable>, Lo
         super.willResignActive()
         // TODO: Pause any business logic.
     }
+    
+    // MARK: - LoggedOutPresentableListener
+    func login(player1Name: String?, player2Name: String?) {
+        let player1Name = playerName(player1Name, defaultName: "Player 1")
+        let player2Name = playerName(player2Name, defaultName: "Player 2")
+        
+        print("\(player1Name) vs \(player2Name)")
+    }
+    
+    private func playerName(_ name: String?, defaultName: String) -> String {
+        guard let name = name else {
+            return defaultName
+        }
+        return name.isEmpty ? defaultName : name
+    }
 }
