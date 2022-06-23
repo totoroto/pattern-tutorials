@@ -7,5 +7,6 @@
         <page name='Builder'/>
         <page name='FactoryMethod'/>
         <page name='AbstractFactory'/>
+        <page name='Prototype'/>
     </pages>
 </playground>
