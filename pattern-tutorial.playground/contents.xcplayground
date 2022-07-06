@@ -8,5 +8,7 @@
         <page name='FactoryMethod'/>
         <page name='AbstractFactory'/>
         <page name='Prototype'/>
+        <page name='Adapter'/>
+        <page name='Decorater'/>
     </pages>
 </playground>
