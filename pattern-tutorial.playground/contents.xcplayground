@@ -10,5 +10,6 @@
         <page name='Prototype'/>
         <page name='Adapter'/>
         <page name='Decorater'/>
+        <page name='Composite'/>
     </pages>
 </playground>
