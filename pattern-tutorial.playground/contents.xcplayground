@@ -11,5 +11,6 @@
         <page name='Adapter'/>
         <page name='Decorater'/>
         <page name='Composite'/>
+        <page name='TemplateMethod'/>
     </pages>
 </playground>
