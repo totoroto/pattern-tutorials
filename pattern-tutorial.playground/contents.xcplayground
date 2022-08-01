@@ -12,5 +12,6 @@
         <page name='Decorater'/>
         <page name='Composite'/>
         <page name='TemplateMethod'/>
+        <page name='Observer'/>
     </pages>
 </playground>
