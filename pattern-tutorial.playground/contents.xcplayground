@@ -14,5 +14,6 @@
         <page name='TemplateMethod'/>
         <page name='Observer'/>
         <page name='Iterator'/>
+        <page name='Repository'/>
     </pages>
 </playground>
