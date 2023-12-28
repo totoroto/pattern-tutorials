@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C463CFD62B3D2E7900006CE8 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFD52B3D2E7900006CE8 /* Formatter.swift */; };
 		C49F95442B3AA23A0020D31F /* SuperPayDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F95402B3AA23A0020D31F /* SuperPayDashboardRouter.swift */; };
 		C49F95452B3AA23A0020D31F /* SuperPayDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F95412B3AA23A0020D31F /* SuperPayDashboardViewController.swift */; };
 		C49F95462B3AA23A0020D31F /* SuperPayDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F95422B3AA23A0020D31F /* SuperPayDashboardBuilder.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C463CFD52B3D2E7900006CE8 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		C49F95402B3AA23A0020D31F /* SuperPayDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardRouter.swift; sourceTree = "<group>"; };
 		C49F95412B3AA23A0020D31F /* SuperPayDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardViewController.swift; sourceTree = "<group>"; };
 		C49F95422B3AA23A0020D31F /* SuperPayDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardBuilder.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				C49F95412B3AA23A0020D31F /* SuperPayDashboardViewController.swift */,
 				C49F95422B3AA23A0020D31F /* SuperPayDashboardBuilder.swift */,
 				C49F95432B3AA23A0020D31F /* SuperPayDashboardInteractor.swift */,
+				C463CFD52B3D2E7900006CE8 /* Formatter.swift */,
 			);
 			path = SuperPayDashboard;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				F5EAA22D270B3A4500EF2B70 /* RideTypeView.swift in Sources */,
 				C49F95472B3AA23A0020D31F /* SuperPayDashboardInteractor.swift in Sources */,
 				F5EAA219270B395900EF2B70 /* HomeWidgetView.swift in Sources */,
+				C463CFD62B3D2E7900006CE8 /* Formatter.swift in Sources */,
 				F57F6AFE26DB4CD700C0117D /* RootTabBarController.swift in Sources */,
 				C49F95462B3AA23A0020D31F /* SuperPayDashboardBuilder.swift in Sources */,
 				F57F6AEB26DB4A2700C0117D /* FinanceHomeInteractor.swift in Sources */,
