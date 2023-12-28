@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C463CFD62B3D2E7900006CE8 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFD52B3D2E7900006CE8 /* Formatter.swift */; };
+		C463CFDC2B3D340500006CE8 /* CardOnFileDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFD82B3D340500006CE8 /* CardOnFileDashboardRouter.swift */; };
+		C463CFDD2B3D340500006CE8 /* CardOnFileDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFD92B3D340500006CE8 /* CardOnFileDashboardViewController.swift */; };
+		C463CFDE2B3D340500006CE8 /* CardOnFileDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFDA2B3D340500006CE8 /* CardOnFileDashboardBuilder.swift */; };
+		C463CFDF2B3D340500006CE8 /* CardOnFileDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFDB2B3D340500006CE8 /* CardOnFileDashboardInteractor.swift */; };
 		C49F95442B3AA23A0020D31F /* SuperPayDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F95402B3AA23A0020D31F /* SuperPayDashboardRouter.swift */; };
 		C49F95452B3AA23A0020D31F /* SuperPayDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F95412B3AA23A0020D31F /* SuperPayDashboardViewController.swift */; };
 		C49F95462B3AA23A0020D31F /* SuperPayDashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F95422B3AA23A0020D31F /* SuperPayDashboardBuilder.swift */; };
@@ -55,6 +59,10 @@
 
 /* Begin PBXFileReference section */
 		C463CFD52B3D2E7900006CE8 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		C463CFD82B3D340500006CE8 /* CardOnFileDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileDashboardRouter.swift; sourceTree = "<group>"; };
+		C463CFD92B3D340500006CE8 /* CardOnFileDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileDashboardViewController.swift; sourceTree = "<group>"; };
+		C463CFDA2B3D340500006CE8 /* CardOnFileDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileDashboardBuilder.swift; sourceTree = "<group>"; };
+		C463CFDB2B3D340500006CE8 /* CardOnFileDashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileDashboardInteractor.swift; sourceTree = "<group>"; };
 		C49F95402B3AA23A0020D31F /* SuperPayDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardRouter.swift; sourceTree = "<group>"; };
 		C49F95412B3AA23A0020D31F /* SuperPayDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardViewController.swift; sourceTree = "<group>"; };
 		C49F95422B3AA23A0020D31F /* SuperPayDashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayDashboardBuilder.swift; sourceTree = "<group>"; };
@@ -113,6 +121,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C463CFD72B3D33D900006CE8 /* CardOnFileDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C463CFD82B3D340500006CE8 /* CardOnFileDashboardRouter.swift */,
+				C463CFD92B3D340500006CE8 /* CardOnFileDashboardViewController.swift */,
+				C463CFDA2B3D340500006CE8 /* CardOnFileDashboardBuilder.swift */,
+				C463CFDB2B3D340500006CE8 /* CardOnFileDashboardInteractor.swift */,
+			);
+			path = CardOnFileDashboard;
+			sourceTree = "<group>";
+		};
 		C49F953F2B3AA1F60020D31F /* SuperPayDashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				C49F953F2B3AA1F60020D31F /* SuperPayDashboard */,
+				C463CFD72B3D33D900006CE8 /* CardOnFileDashboard */,
 				F57F6AE426DB4A2700C0117D /* FinanceHomeRouter.swift */,
 				F57F6AE526DB4A2700C0117D /* FinanceHomeViewController.swift */,
 				F57F6AE626DB4A2700C0117D /* FinanceHomeBuilder.swift */,
@@ -344,6 +364,7 @@
 				F5EAA22E270B3A4500EF2B70 /* SuperPayView.swift in Sources */,
 				F5EAA220270B39DC00EF2B70 /* PushModalPresentationController.swift in Sources */,
 				F57F6AF126DB4A2D00C0117D /* ProfileHomeViewController.swift in Sources */,
+				C463CFDD2B3D340500006CE8 /* CardOnFileDashboardViewController.swift in Sources */,
 				F57F6AF326DB4A2D00C0117D /* ProfileHomeInteractor.swift in Sources */,
 				F5829F7626DB34AA00BFA8CD /* AppRootBuilder.swift in Sources */,
 				F5EAA230270B3A7100EF2B70 /* RIBs+Utils.swift in Sources */,
@@ -356,12 +377,14 @@
 				F5EAA22C270B3A4500EF2B70 /* TransportHomeInteractor.swift in Sources */,
 				F5829F7726DB34AA00BFA8CD /* AppRootInteractor.swift in Sources */,
 				F5EAA22D270B3A4500EF2B70 /* RideTypeView.swift in Sources */,
+				C463CFDC2B3D340500006CE8 /* CardOnFileDashboardRouter.swift in Sources */,
 				C49F95472B3AA23A0020D31F /* SuperPayDashboardInteractor.swift in Sources */,
 				F5EAA219270B395900EF2B70 /* HomeWidgetView.swift in Sources */,
 				C463CFD62B3D2E7900006CE8 /* Formatter.swift in Sources */,
 				F57F6AFE26DB4CD700C0117D /* RootTabBarController.swift in Sources */,
 				C49F95462B3AA23A0020D31F /* SuperPayDashboardBuilder.swift in Sources */,
 				F57F6AEB26DB4A2700C0117D /* FinanceHomeInteractor.swift in Sources */,
+				C463CFDF2B3D340500006CE8 /* CardOnFileDashboardInteractor.swift in Sources */,
 				F5EAA21B270B395900EF2B70 /* AppHomeInteractor.swift in Sources */,
 				C49F954C2B3AB2490020D31F /* Combine+Utils.swift in Sources */,
 				F57F6AE826DB4A2700C0117D /* FinanceHomeRouter.swift in Sources */,
@@ -375,6 +398,7 @@
 				C49F95452B3AA23A0020D31F /* SuperPayDashboardViewController.swift in Sources */,
 				F57EBE562738468700FE9319 /* UITableView+Utils.swift in Sources */,
 				F57EBE552738468700FE9319 /* Array+Utils.swift in Sources */,
+				C463CFDE2B3D340500006CE8 /* CardOnFileDashboardBuilder.swift in Sources */,
 				F5829F7426DB34AA00BFA8CD /* AppRootRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
