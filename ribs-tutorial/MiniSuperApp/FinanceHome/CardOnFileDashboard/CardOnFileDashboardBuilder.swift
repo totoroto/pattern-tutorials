@@ -8,13 +8,12 @@
 import ModernRIBs
 
 protocol CardOnFileDashboardDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    // CardOnFileBuilder에서 리포지토리를 만들지 않고 부모에서 받아오는게 나을것 같아 추가
+    var cardsOnFileRepository: CardOnFileRepository { get }
 }
 
-final class CardOnFileDashboardComponent: Component<CardOnFileDashboardDependency> {
-
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+final class CardOnFileDashboardComponent: Component<CardOnFileDashboardDependency>, CardOnFileDashboardInteractorDependency {
+    var cardsOnFileRepository: CardOnFileRepository { dependency.cardsOnFileRepository }
 }
 
 // MARK: - Builder
@@ -32,7 +31,8 @@ final class CardOnFileDashboardBuilder: Builder<CardOnFileDashboardDependency>, 
     func build(withListener listener: CardOnFileDashboardListener) -> CardOnFileDashboardRouting {
         let component = CardOnFileDashboardComponent(dependency: dependency)
         let viewController = CardOnFileDashboardViewController()
-        let interactor = CardOnFileDashboardInteractor(presenter: viewController)
+        let interactor = CardOnFileDashboardInteractor(presenter: viewController,
+                                                       dependency: component)
         interactor.listener = listener
         return CardOnFileDashboardRouter(interactor: interactor, viewController: viewController)
     }
