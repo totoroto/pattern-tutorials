@@ -12,6 +12,7 @@ protocol AddPaymentMethodPresentableListener: AnyObject {
     // TODO: Declare properties and methods that the view controller can invoke to perform
     // business logic, such as signIn(). This protocol is implemented by the corresponding
     // interactor class.
+    func didTapClose()
 }
 
 final class AddPaymentMethodViewController: UIViewController, AddPaymentMethodPresentable, AddPaymentMethodViewControllable {
@@ -82,6 +83,11 @@ final class AddPaymentMethodViewController: UIViewController, AddPaymentMethodPr
     private func setupViews() {
         title = "카드 추가"
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark",
+                                                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold)),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(didTapClose))
         view.backgroundColor = .backgroundColor
         view.addSubview(cardNumberTextField)
         view.addSubview(stackView)
@@ -113,5 +119,10 @@ final class AddPaymentMethodViewController: UIViewController, AddPaymentMethodPr
     @objc
     private func didTapAddCard() {
         
+    }
+    
+    @objc
+    private func didTapClose() {
+        listener?.didTapClose()
     }
 }

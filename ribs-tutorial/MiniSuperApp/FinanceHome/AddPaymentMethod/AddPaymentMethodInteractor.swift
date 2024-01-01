@@ -18,6 +18,7 @@ protocol AddPaymentMethodPresentable: Presentable {
 
 protocol AddPaymentMethodListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func addPaymentMethodDidTapClose()
 }
 
 final class AddPaymentMethodInteractor: PresentableInteractor<AddPaymentMethodPresentable>, AddPaymentMethodInteractable, AddPaymentMethodPresentableListener {
@@ -40,5 +41,9 @@ final class AddPaymentMethodInteractor: PresentableInteractor<AddPaymentMethodPr
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    func didTapClose() {
+        listener?.addPaymentMethodDidTapClose() // 자신을 띄웠던 부모 리블렛에 이벤트 전달
     }
 }

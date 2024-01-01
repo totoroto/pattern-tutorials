@@ -40,7 +40,13 @@ final class FinanceHomeInteractor: PresentableInteractor<FinanceHomePresentable>
     // TODO: Pause any business logic.
   }
     
+    // MARK: - CardOnFileDashboardListener
     func cardOnFileDashboardDidTapAddPaymentMethod() {
         router?.attachAddPaymentMethod()
+    }
+    
+    // MARK: - AddPaymentMethodListener
+    func addPaymentMethodDidTapClose() {
+        router?.detachAddPaymentMethod()
     }
 }
