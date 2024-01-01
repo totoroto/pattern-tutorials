@@ -5,6 +5,7 @@
 //  Created by summer on 12/29/23.
 //
 
+import Combine
 import ModernRIBs
 
 protocol AddPaymentMethodRouting: ViewableRouting {
@@ -19,16 +20,27 @@ protocol AddPaymentMethodPresentable: Presentable {
 protocol AddPaymentMethodListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
     func addPaymentMethodDidTapClose()
+    func addPaymentMethodDidAddCard(paymentMethod: PaymentMethod)
+}
+
+protocol AddPaymentMethodInteractorDependency {
+    var cardOnFileRepository: CardOnFileRepository { get }
 }
 
 final class AddPaymentMethodInteractor: PresentableInteractor<AddPaymentMethodPresentable>, AddPaymentMethodInteractable, AddPaymentMethodPresentableListener {
 
     weak var router: AddPaymentMethodRouting?
     weak var listener: AddPaymentMethodListener?
+    
+    private let dependency: AddPaymentMethodInteractorDependency
+    private var cancellable: Set<AnyCancellable>
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: AddPaymentMethodPresentable) {
+    init(presenter: AddPaymentMethodPresentable,
+         dependency: AddPaymentMethodInteractorDependency) {
+        self.dependency = dependency
+        self.cancellable = .init()
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -46,4 +58,13 @@ final class AddPaymentMethodInteractor: PresentableInteractor<AddPaymentMethodPr
     func didTapClose() {
         listener?.addPaymentMethodDidTapClose() // 자신을 띄웠던 부모 리블렛에 이벤트 전달
     }
+    
+    func didTapConfirm(with number: String, cvc: String, expiry: String) {
+        let info = AddPaymentMethodInfo(number: number, cvc: cvc, expiration: expiry)
+        dependency.cardOnFileRepository.addCard(info: info)
+            .sink(receiveCompletion: {_ in }) { [weak self] method in
+                self?.listener?.addPaymentMethodDidAddCard(paymentMethod: method)
+            }.store(in: &cancellable)
+    }
+
 }

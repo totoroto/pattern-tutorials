@@ -10,9 +10,12 @@ import ModernRIBs
 protocol AddPaymentMethodDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
     // created by this RIB.
+    var cardOnFileRepository: CardOnFileRepository { get }
 }
 
-final class AddPaymentMethodComponent: Component<AddPaymentMethodDependency> {
+final class AddPaymentMethodComponent: Component<AddPaymentMethodDependency>,
+                                       AddPaymentMethodInteractorDependency {
+    var cardOnFileRepository: CardOnFileRepository { dependency.cardOnFileRepository }
 
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
@@ -32,7 +35,8 @@ final class AddPaymentMethodBuilder: Builder<AddPaymentMethodDependency>, AddPay
     func build(withListener listener: AddPaymentMethodListener) -> AddPaymentMethodRouting {
         let component = AddPaymentMethodComponent(dependency: dependency)
         let viewController = AddPaymentMethodViewController()
-        let interactor = AddPaymentMethodInteractor(presenter: viewController)
+        let interactor = AddPaymentMethodInteractor(presenter: viewController,
+                                                    dependency: component)
         interactor.listener = listener
         return AddPaymentMethodRouter(interactor: interactor, viewController: viewController)
     }
