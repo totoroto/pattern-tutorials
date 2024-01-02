@@ -5,16 +5,19 @@ protocol FinanceHomeDependency: Dependency {
   // created by this RIB.
 }
 
-final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency {
+final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency, TopupDependency {
     var balance: ReadOnlyCurrentValuePublisher<Double> { balancedPublisher }
     private let balancedPublisher: CurrentValuePublisher<Double>
     let cardOnFileRepository: CardOnFileRepository
+    var topupBaseViewController: ViewControllable
     
     init(dependency: FinanceHomeDependency,
          balance: CurrentValuePublisher<Double>,
-         cardOnFileRepository: CardOnFileRepository) {
+         cardOnFileRepository: CardOnFileRepository,
+         topupViewController: ViewControllable) {
         self.balancedPublisher = balance
         self.cardOnFileRepository = cardOnFileRepository
+        self.topupBaseViewController = topupViewController
         super.init(dependency: dependency)
     }
   // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
@@ -34,21 +37,26 @@ final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHomeBuild
   
   func build(withListener listener: FinanceHomeListener) -> FinanceHomeRouting {
     let balancePublisher = CurrentValuePublisher<Double>(0)
-    let component = FinanceHomeComponent(dependency: dependency,
+      
+      let viewController = FinanceHomeViewController()
+      let component = FinanceHomeComponent(dependency: dependency,
                                          balance: balancePublisher,
-                                         cardOnFileRepository: CardOnFileRepositoryImpl())
-    let viewController = FinanceHomeViewController()
+                                         cardOnFileRepository: CardOnFileRepositoryImpl(),
+                                         topupViewController: viewController)
+    
     let interactor = FinanceHomeInteractor(presenter: viewController)
     interactor.listener = listener
       
       let superPayDashBoardBuilder = SuperPayDashboardBuilder(dependency: component)
       let cardOnFileDashboardBuilder = CardOnFileDashboardBuilder(dependency: component)
       let addPaymentMethodBuilder = AddPaymentMethodBuilder(dependency: component)
+      let topUpBuilder = TopupBuilder(dependency: component)
       
     return FinanceHomeRouter(interactor: interactor,
                              viewController: viewController,
                              superPayDashboardBuildable: superPayDashBoardBuilder,
                              cardOnFileDashboardBuildable: cardOnFileDashboardBuilder,
-                             addPaymentMethodBuildable: addPaymentMethodBuilder)
+                             addPaymentMethodBuildable: addPaymentMethodBuilder,
+                             topUpBuildable: topUpBuilder)
   }
 }

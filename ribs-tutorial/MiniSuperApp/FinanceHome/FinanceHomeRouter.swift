@@ -1,6 +1,6 @@
 import ModernRIBs
 
-protocol FinanceHomeInteractable: Interactable, SuperPayDashboardListener, CardOnFileDashboardListener, AddPaymentMethodListener {
+protocol FinanceHomeInteractable: Interactable, SuperPayDashboardListener, CardOnFileDashboardListener, AddPaymentMethodListener, TopupListener {
   var router: FinanceHomeRouting? { get set }
   var listener: FinanceHomeListener? { get set }
     
@@ -22,15 +22,20 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
     private let addPaymentMethodBuildable: AddPaymentMethodBuildable
     private var addPaymentMethodRouting: Routing?
     
+    private let topUpBuildable: TopupBuildable
+    private var topUpRouting: Routing?
+    
   // TODO: Constructor inject child builder protocols to allow building children.
     init(interactor: FinanceHomeInteractable,
          viewController: FinanceHomeViewControllable,
          superPayDashboardBuildable: SuperPayDashboardBuildable,
          cardOnFileDashboardBuildable: CardOnFileDashboardBuildable,
-         addPaymentMethodBuildable: AddPaymentMethodBuildable) {
+         addPaymentMethodBuildable: AddPaymentMethodBuildable,
+         topUpBuildable: TopupBuildable) {
         self.superPayDashboardBuildable = superPayDashboardBuildable
         self.cardOnFileDashboardBuildable = cardOnFileDashboardBuildable
         self.addPaymentMethodBuildable = addPaymentMethodBuildable
+        self.topUpBuildable = topUpBuildable
         
     super.init(interactor: interactor, viewController: viewController)
     interactor.router = self
@@ -73,5 +78,18 @@ final class FinanceHomeRouter: ViewableRouter<FinanceHomeInteractable, FinanceHo
 
         detachChild(router)
         addPaymentMethodRouting = nil
+    }
+    
+    func attachTopUp() {
+        if topUpRouting != nil { return }
+        let router = topUpBuildable.build(withListener: interactor)
+        self.topUpRouting = router
+        attachChild(router)
+    }
+    
+    func detachTopUp() {
+        guard let router = topUpRouting else { return }
+        detachChild(router)
+        topUpRouting = nil
     }
 }
