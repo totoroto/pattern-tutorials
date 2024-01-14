@@ -22,6 +22,9 @@ final class SuperPayRepositoryImpl: SuperPayRepository {
             self?.bgQueue.async {
                 Thread.sleep(forTimeInterval: 2)
                 promise(.success(()))
+                
+                let newBalance = (self?.balanceSubject.value).map { $0 + amount }
+                newBalance.map { self?.balanceSubject.send($0) }
             }
         }.eraseToAnyPublisher()
     }

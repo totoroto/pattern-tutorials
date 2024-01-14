@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 import ModernRIBs
 
 protocol EnterAmountRouting: ViewableRouting {
@@ -16,12 +17,15 @@ protocol EnterAmountPresentable: Presentable {
     var listener: EnterAmountPresentableListener? { get set }
     
     func updateSelectedPaymentMethod(with viewModel: SelectedPaymentMethodViewModel)
+    func startLoading()
+    func stopLoading()
 }
 
 protocol EnterAmountListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
     func enterAmountDidTapClose()
     func enterAmountDidTapPaymentMethod()
+    func enterAmountDidFinishTopup()
 }
 
 protocol EnterAmountInteractorDependency {
@@ -69,6 +73,17 @@ final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>
     }
     
     func didTapTopup(with amount: Double) {
+        presenter.startLoading()
         
+        dependency.superPayRepository.topup(amount: amount,
+                                            paymentMethodID: dependency.selectedPaymentMethod.value.id)
+        .receive(on: DispatchQueue.main)
+        .sink { [weak self] _ in
+            self?.presenter.stopLoading()
+        }
+        receiveValue: { [weak self] _ in
+            // 충전이 완료됨을 부모 리블렛에게 알려줌
+            self?.listener?.enterAmountDidFinishTopup()
+        }.store(in: &cancellables)
     }
 }
