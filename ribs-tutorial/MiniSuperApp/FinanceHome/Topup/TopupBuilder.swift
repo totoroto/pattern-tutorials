@@ -11,6 +11,7 @@ protocol TopupDependency: Dependency {
     // TODO: Make sure to convert the variable into lower-camelcase.
     var topupBaseViewController: ViewControllable { get }
     var cardOnFileRepository: CardOnFileRepository { get }
+    var superPayRepository: SuperPayRepository { get }
     
     // TODO: Declare the set of dependencies required by this RIB, but won't be
     // created by this RIB.
@@ -18,7 +19,8 @@ protocol TopupDependency: Dependency {
 
 final class TopupComponent: Component<TopupDependency>, TopupInteractorDependency, AddPaymentMethodDependency, EnterAmountDependency, CardOnFileDependency {
     var cardOnFileRepository: CardOnFileRepository { dependency.cardOnFileRepository }
-
+    var superPayRepository: SuperPayRepository { dependency.superPayRepository }
+    
     // TODO: Make sure to convert the variable into lower-camelcase.
     fileprivate var topupBaseViewController: ViewControllable { dependency.topupBaseViewController }
     

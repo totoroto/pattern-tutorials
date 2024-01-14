@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C41C89932B4282A4009383B3 /* AdaptivePresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C89922B4282A4009383B3 /* AdaptivePresentationControllerDelegate.swift */; };
 		C41C89952B428CAC009383B3 /* AddPaymentMethodInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C89942B428CAC009383B3 /* AddPaymentMethodInfo.swift */; };
+		C44DDE452B53F8EF00A55FFB /* SuperPayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44DDE442B53F8EF00A55FFB /* SuperPayRepository.swift */; };
 		C463CFD62B3D2E7900006CE8 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFD52B3D2E7900006CE8 /* Formatter.swift */; };
 		C463CFDC2B3D340500006CE8 /* CardOnFileDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFD82B3D340500006CE8 /* CardOnFileDashboardRouter.swift */; };
 		C463CFDD2B3D340500006CE8 /* CardOnFileDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C463CFD92B3D340500006CE8 /* CardOnFileDashboardViewController.swift */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		C41C89922B4282A4009383B3 /* AdaptivePresentationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptivePresentationControllerDelegate.swift; sourceTree = "<group>"; };
 		C41C89942B428CAC009383B3 /* AddPaymentMethodInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodInfo.swift; sourceTree = "<group>"; };
+		C44DDE442B53F8EF00A55FFB /* SuperPayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPayRepository.swift; sourceTree = "<group>"; };
 		C463CFD52B3D2E7900006CE8 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		C463CFD82B3D340500006CE8 /* CardOnFileDashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileDashboardRouter.swift; sourceTree = "<group>"; };
 		C463CFD92B3D340500006CE8 /* CardOnFileDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnFileDashboardViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D991522B3EECE700C18D13 /* CardOnFileRepository.swift */,
+				C44DDE442B53F8EF00A55FFB /* SuperPayRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				F57F6AEB26DB4A2700C0117D /* FinanceHomeInteractor.swift in Sources */,
 				C4CCDB1E2B4583BA0070A5C9 /* EnterAmountInteractor.swift in Sources */,
 				C4CCDB252B45850F0070A5C9 /* EnterAmountViewController.swift in Sources */,
+				C44DDE452B53F8EF00A55FFB /* SuperPayRepository.swift in Sources */,
 				C463CFDF2B3D340500006CE8 /* CardOnFileDashboardInteractor.swift in Sources */,
 				F5EAA21B270B395900EF2B70 /* AppHomeInteractor.swift in Sources */,
 				C49F954C2B3AB2490020D31F /* Combine+Utils.swift in Sources */,

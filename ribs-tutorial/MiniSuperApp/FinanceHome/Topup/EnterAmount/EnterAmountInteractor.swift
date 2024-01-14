@@ -26,6 +26,7 @@ protocol EnterAmountListener: AnyObject {
 
 protocol EnterAmountInteractorDependency {
     var selectedPaymentMethod: ReadOnlyCurrentValuePublisher<PaymentMethod> { get }
+    var superPayRepository: SuperPayRepository { get }
 }
 
 final class EnterAmountInteractor: PresentableInteractor<EnterAmountPresentable>, EnterAmountInteractable, EnterAmountPresentableListener {
