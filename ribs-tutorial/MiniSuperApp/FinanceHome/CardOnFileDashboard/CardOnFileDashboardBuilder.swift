@@ -6,6 +6,7 @@
 //
 
 import ModernRIBs
+import FinanceRepository
 
 protocol CardOnFileDashboardDependency: Dependency {
     // CardOnFileBuilder에서 리포지토리를 만들지 않고 부모에서 받아오는게 나을것 같아 추가

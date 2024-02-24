@@ -26,17 +26,17 @@ final class AddPaymentMethodComponent: Component<AddPaymentMethodDependency>,
 
 public protocol AddPaymentMethodBuildable: Buildable {
     func build(withListener listener: AddPaymentMethodListener,
-               closeButtonType: DismissButtonType) -> AddPaymentMethodRouting
+               closeButtonType: DismissButtonType) -> ViewableRouting
 }
 
 public final class AddPaymentMethodBuilder: Builder<AddPaymentMethodDependency>, AddPaymentMethodBuildable {
 
-    override init(dependency: AddPaymentMethodDependency) {
+    public override init(dependency: AddPaymentMethodDependency) {
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: AddPaymentMethodListener,
-               closeButtonType: DismissButtonType) -> AddPaymentMethodRouting {
+    public func build(withListener listener: AddPaymentMethodListener,
+               closeButtonType: DismissButtonType) -> ViewableRouting {
         let component = AddPaymentMethodComponent(dependency: dependency)
         let viewController = AddPaymentMethodViewController(closeButtonType: closeButtonType)
         let interactor = AddPaymentMethodInteractor(presenter: viewController,

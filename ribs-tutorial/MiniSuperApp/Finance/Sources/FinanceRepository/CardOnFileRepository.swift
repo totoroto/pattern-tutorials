@@ -17,7 +17,7 @@ public protocol CardOnFileRepository {
 }
 
 public final class CardOnFileRepositoryImpl: CardOnFileRepository {
-    var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
+    public var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
     
     private let paymentMethodsSubject = CurrentValuePublisher<[PaymentMethod]>([
         PaymentMethod(id: "0", name: "우리은행", digits: "0123", color: "#f19a38ff", isPrimary: false),
@@ -26,6 +26,8 @@ public final class CardOnFileRepositoryImpl: CardOnFileRepository {
         PaymentMethod(id: "3", name: "국민은행", digits: "2812", color: "#65c466ff", isPrimary: false),
         PaymentMethod(id: "4", name: "카카오뱅크", digits: "8751", color: "#ffcc00ff", isPrimary: false)
     ])
+    
+    public init() { }
     
     public func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error> {
         let paymentMethod = PaymentMethod(id: "00", name: "New 카드", digits: "\(info.number.suffix(4))", color: "", isPrimary: false)

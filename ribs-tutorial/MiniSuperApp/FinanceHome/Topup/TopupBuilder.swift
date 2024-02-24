@@ -6,6 +6,10 @@
 //
 
 import ModernRIBs
+import FinanceRepository
+import FinanceEntity
+import CombineUtil
+import AddPaymentMethod
 
 protocol TopupDependency: Dependency {
     // TODO: Make sure to convert the variable into lower-camelcase.
