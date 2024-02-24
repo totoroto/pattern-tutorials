@@ -5,19 +5,28 @@ import PackageDescription
 
 let package = Package(
     name: "Platform",
+    platforms: [.iOS(.v14)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Platform",
-            targets: ["Platform"]),
+            name: "CombineUtil",
+            targets: ["CombineUtil"]),
+        .library(
+            name: "RIBsUtil",
+            targets: ["RIBsUtil"])
+    ],
+    dependencies: [.package(url: "https://github.com/CombineCommunity/CombineExt", from: ("1.0.0")),
+                   .package(name: "ModernRIBs", url: "https://github.com/DevYeom/ModernRIBs", .exact("1.0.1")),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Platform"),
-        .testTarget(
-            name: "PlatformTests",
-            dependencies: ["Platform"]),
+            name: "CombineUtil",
+        dependencies: [
+            "CombineExt"
+        ]),
+        .target(
+            name: "RIBsUtil",
+        dependencies: [
+            "ModernRIBs"
+        ])
     ]
 )
