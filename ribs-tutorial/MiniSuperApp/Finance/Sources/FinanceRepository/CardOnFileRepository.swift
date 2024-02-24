@@ -7,14 +7,15 @@
 
 import Combine
 import Foundation
+import FinanceEntity
 
 /// 서버 API를 호출해서 유저의 카드목록을 가져옵니다.
-protocol CardOnFileRepository {
+public protocol CardOnFileRepository {
     var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { get }
     func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error>
 }
 
-final class CardOnFileRepositoryImpl: CardOnFileRepository {
+public final class CardOnFileRepositoryImpl: CardOnFileRepository {
     var cardOnFile: ReadOnlyCurrentValuePublisher<[PaymentMethod]> { paymentMethodsSubject }
     
     private let paymentMethodsSubject = CurrentValuePublisher<[PaymentMethod]>([
@@ -25,7 +26,7 @@ final class CardOnFileRepositoryImpl: CardOnFileRepository {
         PaymentMethod(id: "4", name: "카카오뱅크", digits: "8751", color: "#ffcc00ff", isPrimary: false)
     ])
     
-    func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error> {
+    public func addCard(info: AddPaymentMethodInfo) -> AnyPublisher<PaymentMethod, Error> {
         let paymentMethod = PaymentMethod(id: "00", name: "New 카드", digits: "\(info.number.suffix(4))", color: "", isPrimary: false)
         
         var new = paymentMethodsSubject.value
