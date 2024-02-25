@@ -9,16 +9,16 @@ import Combine
 import Foundation
 import CombineUtil
 
-protocol SuperPayRepository {
+public protocol SuperPayRepository {
     var balance: ReadOnlyCurrentValuePublisher<Double> { get }
     func topup(amount: Double, paymentMethodID: String) -> AnyPublisher<Void, Error>
 }
 
-final class SuperPayRepositoryImpl: SuperPayRepository {
-    var balance: ReadOnlyCurrentValuePublisher<Double> { balanceSubject }
+public final class SuperPayRepositoryImpl: SuperPayRepository {
+    public var balance: ReadOnlyCurrentValuePublisher<Double> { balanceSubject }
     private let balanceSubject = CurrentValuePublisher<Double>(0)
     
-    func topup(amount: Double, paymentMethodID: String) -> AnyPublisher<Void, Error> {
+    public func topup(amount: Double, paymentMethodID: String) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { [weak self] promise in
             self?.bgQueue.async {
                 Thread.sleep(forTimeInterval: 2)
@@ -32,4 +32,6 @@ final class SuperPayRepositoryImpl: SuperPayRepository {
     
     // API 처럼 동작하도록 흉내
     private let bgQueue = DispatchQueue(label: "topup.repository.queue")
+    
+    public init() {}
 }
