@@ -12,10 +12,17 @@ let package = Package(
             name: "TransportHome",
             targets: ["TransportHome"])
     ],
+    dependencies: [
+        .package(name: "ModernRIBs", url: "https://github.com/DevYeom/ModernRIBs", .exact("1.0.1")),
+        .package(path: "../Finance")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "TransportHome")
+            name: "TransportHome",
+            dependencies: ["ModernRIBs",
+                           .product(name: "FinanceRepository", package: "Finance"),
+                           .product(name: "Topup", package: "Finance")])
     ]
 )
