@@ -10,7 +10,10 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "TransportHome",
-            targets: ["TransportHome"])
+            targets: ["TransportHome"]),
+        .library(
+            name: "TransportHomeImp",
+            targets: ["TransportHomeImp"])
     ],
     dependencies: [
         .package(name: "ModernRIBs", url: "https://github.com/DevYeom/ModernRIBs", .exact("1.0.1")),
@@ -21,7 +24,11 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "TransportHome",
+            dependencies: ["ModernRIBs"]),
+        .target(
+            name: "TransportHomeImp",
             dependencies: ["ModernRIBs",
+                           "TransportHome",
                            .product(name: "FinanceRepository", package: "Finance"),
                            .product(name: "Topup", package: "Finance")])
     ]
