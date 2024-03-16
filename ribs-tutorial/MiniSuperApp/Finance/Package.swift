@@ -58,6 +58,7 @@ let package = Package(
                            "FinanceEntity",
                            "FinanceRepository",
                            "AddPaymentMethod",
+                           "Topup",
                            .product(name: "RIBsUtil", package: "Platform"),
                            .product(name: "SuperUI", package: "Platform")
                           ])
