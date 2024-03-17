@@ -20,6 +20,9 @@ let package = Package(
             name: "Topup",
             targets: ["Topup"]),
         .library(
+            name: "TopupImp",
+            targets: ["TopupImp"]),
+        .library(
             name: "FinanceHome",
             targets: ["FinanceHome"])
     ],
@@ -45,10 +48,15 @@ let package = Package(
                            .product(name: "CombineUtil", package: "Platform")]),
         .target(
             name: "Topup",
+            dependencies: ["ModernRIBs"
+                          ]),
+        .target(
+            name: "TopupImp",
             dependencies: ["ModernRIBs",
                            "FinanceEntity",
                            "FinanceRepository",
                            "AddPaymentMethod",
+                           "Topup",
                            .product(name: "RIBsUtil", package: "Platform"),
                            .product(name: "SuperUI", package: "Platform")
                           ]),
