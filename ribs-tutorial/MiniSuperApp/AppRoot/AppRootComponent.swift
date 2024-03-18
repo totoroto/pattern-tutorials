@@ -40,14 +40,15 @@ final class AppRootComponent: Component<AppRootDependency>, AppHomeDependency, F
     
     init(dependency: AppRootDependency,
          rootViewController: ViewControllable) {
-        self.cardOnFileRepository = CardOnFileRepositoryImpl()
-        
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [SuperAppURLProtocol.self]
         setupURLProtocol() // 커스텀하게 설정된 Response 리턴
         
         let network = NetworkImp(session: URLSession(configuration: config))
-        self.superPayRepository = SuperPayRepositoryImpl(network: network, 
+        self.cardOnFileRepository = CardOnFileRepositoryImpl(network: network,
+                                                             baseURL: BaseURL().financeBaseURL)
+        self.cardOnFileRepository.fetch() // 커스텀하게 설정된 Response 리턴
+        self.superPayRepository = SuperPayRepositoryImpl(network: network,
                                                          baseURL: BaseURL().financeBaseURL)
         self.rootViewController = rootViewController
         super.init(dependency: dependency)
