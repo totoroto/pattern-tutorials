@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 import CombineUtil
+import Network
 
 public protocol SuperPayRepository {
     var balance: ReadOnlyCurrentValuePublisher<Double> { get }
@@ -45,5 +46,11 @@ public final class SuperPayRepositoryImpl: SuperPayRepository {
     // API 처럼 동작하도록 흉내
     private let bgQueue = DispatchQueue(label: "topup.repository.queue")
     
-    public init() {}
+    private let network: Network
+    private let baseURL: URL
+    
+    public init(network: Network, baseURL: URL) {
+        self.network = network
+        self.baseURL = baseURL
+    }
 }
