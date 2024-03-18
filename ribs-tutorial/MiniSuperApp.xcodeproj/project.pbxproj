@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C40E8FC72BA7B58C0091A847 /* TopupImp in Frameworks */ = {isa = PBXBuildFile; productRef = C40E8FC62BA7B58C0091A847 /* TopupImp */; };
+		C40E8FC92BA7B9CE0091A847 /* AddPaymentMethodImp in Frameworks */ = {isa = PBXBuildFile; productRef = C40E8FC82BA7B9CE0091A847 /* AddPaymentMethodImp */; };
 		C4476A312B89CAC800E3E0D0 /* FinanceEntity in Frameworks */ = {isa = PBXBuildFile; productRef = C4476A302B89CAC800E3E0D0 /* FinanceEntity */; };
 		C4476A332B89CAC800E3E0D0 /* FinanceRepository in Frameworks */ = {isa = PBXBuildFile; productRef = C4476A322B89CAC800E3E0D0 /* FinanceRepository */; };
 		C4476A352B89CAC800E3E0D0 /* CombineUtil in Frameworks */ = {isa = PBXBuildFile; productRef = C4476A342B89CAC800E3E0D0 /* CombineUtil */; };
@@ -60,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C49F954A2B3AB2230020D31F /* CombineExt in Frameworks */,
+				C40E8FC92BA7B9CE0091A847 /* AddPaymentMethodImp in Frameworks */,
 				C4ECCED22B89B26C00162B67 /* AddPaymentMethod in Frameworks */,
 				C4476A352B89CAC800E3E0D0 /* CombineUtil in Frameworks */,
 				C4B7B8302BA5740F00A0FA76 /* ProfileHome in Frameworks */,
@@ -183,6 +185,7 @@
 				C4B7B82F2BA5740F00A0FA76 /* ProfileHome */,
 				C4B7B8332BA5933F00A0FA76 /* TransportHomeImp */,
 				C40E8FC62BA7B58C0091A847 /* TopupImp */,
+				C40E8FC82BA7B9CE0091A847 /* AddPaymentMethodImp */,
 			);
 			productName = SuperRedApp;
 			productReference = F5829F5526DB2BC400BFA8CD /* MiniSuperApp.app */;
@@ -464,6 +467,10 @@
 		C40E8FC62BA7B58C0091A847 /* TopupImp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TopupImp;
+		};
+		C40E8FC82BA7B9CE0091A847 /* AddPaymentMethodImp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AddPaymentMethodImp;
 		};
 		C4476A302B89CAC800E3E0D0 /* FinanceEntity */ = {
 			isa = XCSwiftPackageProductDependency;

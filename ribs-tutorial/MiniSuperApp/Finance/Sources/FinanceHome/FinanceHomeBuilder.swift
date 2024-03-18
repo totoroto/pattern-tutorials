@@ -10,13 +10,15 @@ public protocol FinanceHomeDependency: Dependency {
     var cardOnFileRepository: CardOnFileRepository { get }
     var superPayRepository: SuperPayRepository { get }
     var topupBuildable: TopupBuildable { get }
+    var addPaymentMethodBuildable: AddPaymentMethodBuildable { get }
 }
 
-final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency, AddPaymentMethodDependency {
+final class FinanceHomeComponent: Component<FinanceHomeDependency>, SuperPayDashboardDependency, CardOnFileDashboardDependency {
     var balance: ReadOnlyCurrentValuePublisher<Double> { superPayRepository.balance }
     var cardOnFileRepository: CardOnFileRepository { dependency.cardOnFileRepository }
     var superPayRepository: SuperPayRepository { dependency.superPayRepository }
     var topupBuildable: TopupBuildable { dependency.topupBuildable }
+    var addPaymentMethodBuildable: AddPaymentMethodBuildable { dependency.addPaymentMethodBuildable }
   // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
 }
 
@@ -43,13 +45,12 @@ public final class FinanceHomeBuilder: Builder<FinanceHomeDependency>, FinanceHo
       
       let superPayDashBoardBuilder = SuperPayDashboardBuilder(dependency: component)
       let cardOnFileDashboardBuilder = CardOnFileDashboardBuilder(dependency: component)
-      let addPaymentMethodBuilder = AddPaymentMethodBuilder(dependency: component)
       
     return FinanceHomeRouter(interactor: interactor,
                              viewController: viewController,
                              superPayDashboardBuildable: superPayDashBoardBuilder,
                              cardOnFileDashboardBuildable: cardOnFileDashboardBuilder,
-                             addPaymentMethodBuildable: addPaymentMethodBuilder,
+                             addPaymentMethodBuildable: component.addPaymentMethodBuildable,
                              topUpBuildable: component.topupBuildable)
   }
 }
