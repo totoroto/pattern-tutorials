@@ -20,6 +20,9 @@ let package = Package(
             name: "FinanceRepository",
             targets: ["FinanceRepository"]),
         .library(
+            name: "FinanceRepositoryTestSupport",
+            targets: ["FinanceRepositoryTestSupport"]),
+        .library(
             name: "Topup",
             targets: ["Topup"]),
         .library(
@@ -80,6 +83,15 @@ let package = Package(
                            "Topup",
                            .product(name: "RIBsUtil", package: "Platform"),
                            .product(name: "SuperUI", package: "Platform")
-                          ])
+                          ]),
+        .target(
+            name: "FinanceRepositoryTestSupport",
+            dependencies: ["FinanceEntity",
+                           "FinanceRepository",
+                           .product(name: "CombineUtil", package: "Platform")]
+        ),
+        .testTarget(name: "TopupImpTests",
+                    dependencies: ["TopupImp",
+                                   "FinanceRepositoryTestSupport"])
     ]
 )
