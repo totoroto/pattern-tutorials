@@ -9,7 +9,7 @@
 import XCTest
 
 final class EnterAmountRouterTests: XCTestCase {
-
+    
     private var router: EnterAmountRouter!
 
     // TODO: declare other objects and mocks you need as private vars
