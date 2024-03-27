@@ -14,6 +14,7 @@ final class TopupInteractorTests: XCTestCase {
     private var sut: TopupInteractor!
     private var dependency: TopupDependencyMock!
     private var listener: TopupListenerMock!
+    private var router: TopupRoutingMock!
 
     // TODO: declare other objects and mocks you need as private vars
 
@@ -22,8 +23,12 @@ final class TopupInteractorTests: XCTestCase {
         self.dependency = TopupDependencyMock()
         self.listener = TopupListenerMock()
         
-        sut = TopupInteractor(dependency: self.dependency)
-        sut.listener = self.listener
+        let interator = TopupInteractor(dependency: self.dependency)
+        self.router = TopupRoutingMock(interactable: interator)
+        
+        interator.listener = self.listener
+        interator.router = self.router
+        self.sut = interator
     }
 
     // MARK: - Tests
