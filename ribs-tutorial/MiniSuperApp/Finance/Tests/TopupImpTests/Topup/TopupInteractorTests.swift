@@ -11,12 +11,14 @@ import XCTest
 final class TopupInteractorTests: XCTestCase {
 
     private var sut: TopupInteractor!
+    private var dependency: TopupDependencyMock!
 
     // TODO: declare other objects and mocks you need as private vars
 
     override func setUp() {
         super.setUp()
-
+        self.dependency = TopupDependencyMock()
+        sut = TopupInteractor(dependency: self.dependency)
     }
 
     // MARK: - Tests
