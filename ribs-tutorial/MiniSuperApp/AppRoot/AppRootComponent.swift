@@ -19,8 +19,10 @@ import AddPaymentMethod
 import AddPaymentMethodImp
 import Network
 import NetworkImp
+import CombineSchedulers
 
 final class AppRootComponent: Component<AppRootDependency>, AppHomeDependency, FinanceHomeDependency, ProfileHomeDependency, TransportHomeDependency, TopupDependency, AddPaymentMethodDependency {
+    
     var cardOnFileRepository: CardOnFileRepository
     var superPayRepository: SuperPayRepository
     lazy var topupBuildable: TopupBuildable = {
@@ -28,6 +30,7 @@ final class AppRootComponent: Component<AppRootDependency>, AppHomeDependency, F
     }()
     var topupBaseViewController: ViewControllable { rootViewController.topViewControllable }
     private let rootViewController: ViewControllable
+    var mainQueue: AnySchedulerOf<DispatchQueue> { .main }
     
     lazy var transportHomeBuildable: TransportHomeBuildable = {
         TransportHomeBuilder(dependency: self)

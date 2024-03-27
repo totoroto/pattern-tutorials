@@ -66,8 +66,6 @@ final class EnterAmountInteractorTests: XCTestCase {
         sut.didTapTopup(with: 1_000_000)
         
         // then
-        _ = XCTWaiter.wait(for: [expectation(description: "Wait 0.1s")], timeout: 0.1)
-        
         XCTAssertEqual(presenter.startLoadingCallCount, 1)
         XCTAssertEqual(presenter.stopLoadingCallCount, 1)
         XCTAssertEqual(repository.topupCallCount, 1)
