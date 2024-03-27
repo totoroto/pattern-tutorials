@@ -29,6 +29,9 @@ let package = Package(
             name: "TopupImp",
             targets: ["TopupImp"]),
         .library(
+            name: "TopupTestSupport",
+            targets: ["TopupTestSupport"]),
+        .library(
             name: "FinanceHome",
             targets: ["FinanceHome"])
     ],
@@ -75,6 +78,10 @@ let package = Package(
                            .product(name: "SuperUI", package: "Platform")
                           ]),
         .target(
+            name: "TopupTestSupport",
+            dependencies: ["Topup"
+                          ]),
+        .target(
             name: "FinanceHome",
             dependencies: ["ModernRIBs",
                            "FinanceEntity",
@@ -92,6 +99,7 @@ let package = Package(
         ),
         .testTarget(name: "TopupImpTests",
                     dependencies: ["TopupImp",
-                                   "FinanceRepositoryTestSupport"])
+                                   "FinanceRepositoryTestSupport",
+                                   "TopupTestSupport"])
     ]
 )
