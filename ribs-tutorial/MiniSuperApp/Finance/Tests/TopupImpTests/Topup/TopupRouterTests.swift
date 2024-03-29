@@ -10,14 +10,18 @@ import XCTest
 
 final class TopupRouterTests: XCTestCase {
 
-    private var router: TopupRouter!
+    private var sut: TopupRouter!
 
     // TODO: declare other objects and mocks you need as private vars
 
     override func setUp() {
         super.setUp()
 
-        // TODO: instantiate objects and mocks
+        sut = TopupRouter(interactor: <#T##TopupInteractable#>,
+                          viewController: <#T##ViewControllable#>,
+                          addPaymentMethodBuildable: <#T##AddPaymentMethodBuildable#>,
+                          enterAmountBuildable: <#T##EnterAmountBuildable#>,
+                          cardOnFileBuildable: <#T##CardOnFileBuildable#>)
     }
 
     // MARK: - Tests
