@@ -11,6 +11,9 @@ let package = Package(
             name: "AddPaymentMethod",
             targets: ["AddPaymentMethod"]),
         .library(
+            name: "AddPaymentMethodTestSupport",
+            targets: ["AddPaymentMethodTestSupport"]),
+        .library(
             name: "AddPaymentMethodImp",
             targets: ["AddPaymentMethodImp"]),
         .library(
@@ -42,6 +45,12 @@ let package = Package(
     targets: [
         .target(
             name: "AddPaymentMethod",
+            dependencies: ["ModernRIBs",
+                           "FinanceEntity",
+                           .product(name: "RIBsUtil", package: "Platform")
+                          ]),
+        .target(
+            name: "AddPaymentMethodTestSupport",
             dependencies: ["ModernRIBs",
                            "FinanceEntity",
                            .product(name: "RIBsUtil", package: "Platform")
@@ -101,6 +110,7 @@ let package = Package(
                     dependencies: ["TopupImp",
                                    "FinanceRepositoryTestSupport",
                                    "TopupTestSupport",
-                                   "RIBsTestSupport"])
+                                   "AddPaymentMethodTestSupport",
+                                   .product(name: "RIBsTestSupport", package: "Platform")])
     ]
 )

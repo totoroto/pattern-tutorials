@@ -6,22 +6,36 @@
 //
 
 @testable import TopupImp
+import RIBsTestSupport
+import AddPaymentMethodTestSupport
+import AddPaymentMethodImp
 import XCTest
 
 final class TopupRouterTests: XCTestCase {
 
     private var sut: TopupRouter!
+    private var interactor: TopupInteractableMock!
+    private var viewController: ViewControllableMock!
+    private var addPaymentMethodBuildable: AddPaymentMethodBuildableMock!
+    private var enterAmountBuildable: EnterAmountBuildableMock!
+    private var cardOnFileBuildable: CardOnFileBuildableMock!
 
     // TODO: declare other objects and mocks you need as private vars
 
     override func setUp() {
         super.setUp()
-
-        sut = TopupRouter(interactor: <#T##TopupInteractable#>,
-                          viewController: <#T##ViewControllable#>,
-                          addPaymentMethodBuildable: <#T##AddPaymentMethodBuildable#>,
-                          enterAmountBuildable: <#T##EnterAmountBuildable#>,
-                          cardOnFileBuildable: <#T##CardOnFileBuildable#>)
+        
+        interactor = TopupInteractableMock()
+        viewController = ViewControllableMock()
+        addPaymentMethodBuildable = AddPaymentMethodBuildableMock()
+        enterAmountBuildable = EnterAmountBuildableMock()
+        cardOnFileBuildable = CardOnFileBuildableMock()
+        
+        sut = TopupRouter(interactor: interactor,
+                          viewController: viewController,
+                          addPaymentMethodBuildable: addPaymentMethodBuildable,
+                          enterAmountBuildable: enterAmountBuildable,
+                          cardOnFileBuildable: cardOnFileBuildable)
     }
 
     // MARK: - Tests
