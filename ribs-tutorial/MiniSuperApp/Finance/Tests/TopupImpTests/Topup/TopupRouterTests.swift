@@ -9,6 +9,7 @@
 import RIBsTestSupport
 import AddPaymentMethodTestSupport
 import AddPaymentMethodImp
+import ModernRIBs
 import XCTest
 
 final class TopupRouterTests: XCTestCase {
@@ -40,8 +41,53 @@ final class TopupRouterTests: XCTestCase {
 
     // MARK: - Tests
 
-    func test_routeToExample_invokesToExampleResult() {
-        // This is an example of a router test case.
-        // Test your router functions invokes the corresponding builder, attachesChild, presents VC, etc.
+    func testAttachAddPaymentMethod() {
+        // given
+        
+        // when
+        sut.attachAddPaymentMethod(closeButtonType: .close)
+        
+        // then
+        XCTAssertEqual(addPaymentMethodBuildable.buildCallCount, 1)
+        XCTAssertEqual(addPaymentMethodBuildable.closeButtonType, .close)
+        XCTAssertEqual(viewController.presentCallCount, 1)
+    }
+    
+    func testAttachEnterAmount() {
+        // given
+        let router = EnterAmountRoutingMock(interactable: Interactor(),
+                                            viewControllable: ViewControllableMock())
+        var assignedListener: EnterAmountListener?
+        enterAmountBuildable.buildHandler = { listener in
+            assignedListener = listener
+            return router
+        }
+        // when
+        sut.attachEnterAmount()
+        
+        // then
+        XCTAssertEqual(enterAmountBuildable.buildCallCount, 1)
+        XCTAssertTrue(assignedListener === interactor)
+    }
+    
+    /// resetChildRouting 검증
+    func testAttachEnterAmountOnNavigation() {
+        // given
+        let router = EnterAmountRoutingMock(interactable: Interactor(),
+                                            viewControllable: ViewControllableMock())
+        var assignedListener: EnterAmountListener?
+        enterAmountBuildable.buildHandler = { listener in
+            assignedListener = listener
+            return router
+        }
+        // when
+        sut.attachAddPaymentMethod(closeButtonType: .close)
+        sut.attachEnterAmount()
+        
+        // then
+        XCTAssertEqual(enterAmountBuildable.buildCallCount, 1)
+        XCTAssertTrue(assignedListener === interactor)
+        XCTAssertEqual(viewController.presentCallCount, 1)
+        XCTAssertEqual(sut.children.count, 1)
     }
 }

@@ -53,7 +53,8 @@ let package = Package(
             name: "AddPaymentMethodTestSupport",
             dependencies: ["ModernRIBs",
                            "FinanceEntity",
-                           .product(name: "RIBsUtil", package: "Platform")
+                           .product(name: "RIBsUtil", package: "Platform"),
+                           .product(name: "RIBsTestSupport", package: "Platform")
                           ]),
         .target(
             name: "AddPaymentMethodImp",
